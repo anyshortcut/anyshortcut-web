@@ -7,6 +7,7 @@ import DashboardRoute from './components/Dashboard';
 import ShortcutRoute from './components/Shortcuts.vue';
 import SubscriptionRoute from './components/Subscription.vue';
 import ProfileRoute from './components/Profile.vue';
+import Cookies from "js-cookie";
 
 Vue.config.productionTip = false;
 Vue.use(VueRouter);
@@ -18,6 +19,9 @@ const router = new VueRouter({
         {
             path: "/",
             component: DashboardRoute,
+            meta: {
+                authRequired: true,
+            },
             children: [
                 {path: "", component: ShortcutRoute},
                 {path: "shortcuts", name: 'shortcuts', component: ShortcutRoute},
@@ -27,6 +31,20 @@ const router = new VueRouter({
         },
         {path: "*", component: NotFoundRoute},
     ],
+});
+
+router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.authRequired)
+        && !Cookies.get("loginAt")) {
+        next({
+            path: "/login",
+            query: {
+                redirect: to.fullPath,
+            }
+        });
+    } else {
+        next();
+    }
 });
 
 new Vue({

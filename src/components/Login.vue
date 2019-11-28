@@ -9,6 +9,7 @@
     </div>
 </template>
 <script>
+    import Cookies from "js-cookie";
     export default {
         name: "Login",
         methods: {
@@ -29,7 +30,8 @@
         mounted() {
             window.addEventListener('message', event => {
                 if (event.data.action === 'logged-in') {
-                    this.$router.replace("/");
+                    Cookies.set("loginAt", Date.now(), {expires: 365});
+                    this.$router.replace(this.$route.query.redirect || "/");
                 }
             });
         }
