@@ -7,6 +7,9 @@ import DashboardRoute from './components/Dashboard';
 import ShortcutRoute from './components/Shortcuts.vue';
 import SubscriptionRoute from './components/Subscription.vue';
 import ProfileRoute from './components/Profile.vue';
+import SubscriptionA from './components/Subscription-A'
+import Payment from './components/PaymentMethod'
+import Redeem from './components/Redeem'
 import Cookies from "js-cookie";
 
 Vue.config.productionTip = false;
@@ -14,6 +17,7 @@ Vue.use(VueRouter);
 
 const router = new VueRouter({
     mode: "history",
+    linkActiveClass:"active",
     routes: [
         {path: "/login", component: LoginRoute},
         {
@@ -25,7 +29,14 @@ const router = new VueRouter({
             children: [
                 {path: "", component: ShortcutRoute},
                 {path: "shortcuts", name: 'shortcuts', component: ShortcutRoute},
-                {path: "subscription", component: SubscriptionRoute},
+                {
+                    path: "subscription", component: SubscriptionRoute, children: [
+                        {path:'',component:SubscriptionA},
+                        {path: "sub", name: 'sub', component: SubscriptionA},
+                        {path: "PaymentMethod", name: 'pay', component: Payment},
+                        {path:"Redeem",name:'Rdm',component:Redeem}
+                    ]
+                },
                 {path: "profile", component: ProfileRoute},
             ]
         },
