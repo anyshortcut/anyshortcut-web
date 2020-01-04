@@ -6,7 +6,7 @@
                     <img :src="userInfo.user.picture" alt="" class="picture">
                     <p class="userName"> {{userInfo.user.given_name}} </p>
                 </div>
-                <div class="subscription-status" >
+                <div class="subscription-status">
                     <div>
                         {{userInfo.subscription.status}}
                     </div>
@@ -27,6 +27,8 @@
     </div>
 </template>
 <script>
+    import client from "../client.js";
+
     export default {
         name: "Dashboard",
         data() {
@@ -35,10 +37,24 @@
             }
         },
         async created() {
-            let response = await fetch("https://api.anyshortcut.com/user/info", {
-                credentials: 'include'
-            });
-            this.userInfo = (await response.json()).data;
+            // client.getUserInfo().then(response => {
+            //     this.userInfo = response.data.data;
+            // }).catch(error => {
+            //     alert("Get user info error...", error);
+            // });
+
+            try {
+                this.userInfo = await client.getUserInfo();
+            } catch (error) {
+                // alert("Get user info error...", error);
+                // eslint-disable-next-line no-console
+                console.error("Get user info error...", error);
+            }
+
+            // let response = await fetch("https://api.anyshortcut.com/user/info", {
+            //     credentials: 'include'
+            // });
+            // this.userInfo = (await response.json()).data;
         }
     }
 </script>
@@ -105,11 +121,13 @@
         text-decoration: none;
         color: #637282;
     }
+
     .subscription-status {
         margin: 15px;
         text-align: center;
     }
-    .subscription-status>div {
+
+    .subscription-status > div {
         font-size: 12px;
         background-color: #FAC64B;
         border-radius: 10px;

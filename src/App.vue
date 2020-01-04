@@ -1,6 +1,7 @@
 <template>
     <div id="app">
         <router-view></router-view>
+        
     </div>
 </template>
 
@@ -22,6 +23,9 @@
     ul {
         padding: 0;
         margin: 0;
+    }
+    *{
+        box-sizing: inherit;
     }
     #app {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;

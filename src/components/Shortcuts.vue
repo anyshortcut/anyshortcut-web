@@ -11,7 +11,7 @@
                     <div>Primary shortcuts</div>
                     <small>total:{{shortcuts.length}}</small></div>
                 <ul>
-                    <li v-for="shortcut in shortcuts" :key="shortcut.id" class="list-item">
+                    <li v-for="shortcut in shortcuts" :key="shortcut.id" class="list-item" @click="ShortcutDetailView(shortcut)">
                         <img :src="shortcut.favicon" alt="" class="shortcut-img">
                         <div class="shortcut-url">
                             <div>{{shortcut.title}}</div>
@@ -24,12 +24,18 @@
             <div class="">
                 <div class="pipe-title">
                     <div>Compound shortcuts</div>
-                    <small>total:{{compound.length}}</small>
+                    <small>total:{{compounds.length}}</small>
                 </div>
                 <div>
-                    <ul v-if="compound.length">
-                        <li></li>
-                        <div>{{compound}}</div>
+                    <ul v-if="compounds.length">
+                        <li v-for="(compound,index) in compounds" :key="index" class="list-item" @click="ShortcutDetailView(compound)">
+                            <img :src="compound.favicon" alt="" class="shortcut-img">
+                            <div class="shortcut-url">
+                                <div>{{compound.title}}</div>
+                                <small>{{compound.url}}</small>
+                            </div>
+                            <span class="shortcut-key">{{compound.key}}</span>
+                        </li>
                     </ul>
                     <div v-else>
                         <img src="" alt="">
@@ -38,26 +44,54 @@
                 </div>
             </div>
         </div>
+        <ShortcutDetail v-if="view" :ww="Data" v-on:shortcut-modal-close="close"></ShortcutDetail>
     </div>
 </template>
 <script>
+    import client from "../client";
+    import ShortcutDetail from "./detail.vue";
+
     export default {
         name: "Shortcut",
         data() {
             return {
                 shortcuts: [],
-                compound: ''
+                compounds: '',
+                view:false,
+                Data:''
             }
         },
-        async created() {
-            let response = await fetch("https://api.anyshortcut.com/shortcuts?type=primary&nested=false", {
-                credentials: 'include',
+        components: {
+            ShortcutDetail,
+        },
+        methods:{
+            ShortcutDetailView(shortcut){
+                this.view= true;
+                this.Data = shortcut;
+            },
+            close(){
+                this.view = false
+            }
+        },
+        created() {
+            client.getShortcuts().then(response => {
+                this.shortcuts = response
+            }).catch(error => {
+                alert(error)
             });
-            this.shortcuts = (await response.json()).data;
-            let compound_response = await fetch("https://api.anyshortcut.com/shortcuts?type=compound&nested=false", {
-                credentials: 'include',
-            });
-            this.compound = (await compound_response.json()).data;
+            client.getCompound().then(response => {
+                this.compounds = response
+            }).catch(error => {
+                alert(error)
+            })
+            // let response = await fetch("https://api.anyshortcut.com/shortcuts?type=primary&nested=false", {
+            //     credentials: 'include',
+            // });
+            // this.shortcuts = (await response.json()).data;
+            // let compound_response = await fetch("https://api.anyshortcut.com/shortcuts?type=compound&nested=false", {
+            //     credentials: 'include',
+            // });
+            // this.compound = (await compound_response.json()).data;
         }
     }
 </script>
@@ -125,12 +159,15 @@
         padding: 15px;
         border-bottom: 1px solid #f4f4f4;
     }
+
     .list-item:last-child {
         border-bottom: 0px;
     }
+
     .list-item:hover {
         background-color: #f4f4f4;
     }
+
     .shortcut-key {
         font-size: 14px;
         padding: 3px 12px;
@@ -139,19 +176,24 @@
         margin: 0 5px 0 auto;
         color: white;
     }
+
     .shortcut-img {
         width: 42px;
         height: 42px;
     }
+
     .shortcut-url {
         margin-left: 25px;
+        overflow: hidden;
     }
-    .shortcut-url>div{
+
+    .shortcut-url > div {
         font-size: 18px;
         font-weight: 500;
         color: #555555;
     }
-    .shortcut-url>small {
+
+    .shortcut-url > small {
         padding: 5px 0;
         font-size: 14px;
         color: #999999;

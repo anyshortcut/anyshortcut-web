@@ -22,7 +22,8 @@
     </div>
 </template>
 <script>
-    import dayjs from 'dayjs'
+    import dayjs from 'dayjs';
+    import client from "../client";
 
     export default {
         name: "Profile",
@@ -37,10 +38,15 @@
             }
         },
         async created() {
-            let response = await fetch("https://api.anyshortcut.com/user/info", {
-                credentials: 'include',
-            });
-            this.access = (await response.json()).data;
+            try {
+                this.access = await client.getUserInfo()
+            } catch (error) {
+                alert(error)
+            }
+            // let response = await fetch("https://api.anyshortcut.com/user/info", {
+            //     credentials: 'include',
+            // });
+            // this.access = (await response.json()).data;
         }
     }
 </script>
