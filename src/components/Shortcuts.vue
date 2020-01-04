@@ -10,16 +10,18 @@
                 <div class="pipe-title">
                     <div>Primary shortcuts</div>
                     <small>total:{{shortcuts.length}}</small></div>
-                <ul>
-                    <li v-for="shortcut in shortcuts" :key="shortcut.id" class="list-item" @click="ShortcutDetailView(shortcut)">
+                
+                    <!-- <li v-for="shortcut in shortcuts" :key="shortcut.id" class="list-item" @click="ShortcutDetailView(shortcut)">
                         <img :src="shortcut.favicon" alt="" class="shortcut-img">
                         <div class="shortcut-url">
                             <div>{{shortcut.title}}</div>
                             <small>{{ shortcut.url }}</small>
                         </div>
                         <span class="shortcut-key">{{shortcut.key}}</span>
-                    </li>
-                </ul>
+                    </li> -->
+                    <listCard :ee="shortcuts" @ShortcutDetail="ShortcutDetailView">
+                    </listCard>
+                
             </div>
             <div class="">
                 <div class="pipe-title">
@@ -27,7 +29,7 @@
                     <small>total:{{compounds.length}}</small>
                 </div>
                 <div>
-                    <ul v-if="compounds.length">
+                    <!-- <ul v-if="compounds.length">
                         <li v-for="(compound,index) in compounds" :key="index" class="list-item" @click="ShortcutDetailView(compound)">
                             <img :src="compound.favicon" alt="" class="shortcut-img">
                             <div class="shortcut-url">
@@ -36,7 +38,10 @@
                             </div>
                             <span class="shortcut-key">{{compound.key}}</span>
                         </li>
-                    </ul>
+                    </ul> -->
+                    <listCard v-if="compounds.length" :ee="compounds" @ShortcutDetail="ShortcutDetailView">
+
+                    </listCard>
                     <div v-else>
                         <img src="" alt="">
                         <small>No compound shortcut bound yet.</small>
@@ -49,7 +54,8 @@
 </template>
 <script>
     import client from "../client";
-    import ShortcutDetail from "./detail.vue";
+    import ShortcutDetail from "./detail";
+    import listCard from "./list"
 
     export default {
         name: "Shortcut",
@@ -63,6 +69,7 @@
         },
         components: {
             ShortcutDetail,
+            listCard
         },
         methods:{
             ShortcutDetailView(shortcut){

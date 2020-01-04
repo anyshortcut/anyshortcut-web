@@ -14,7 +14,6 @@
                     
                 </div>
                 <div>
-
                 </div>
             </div>
             <div class="right">
@@ -22,7 +21,7 @@
                     <div>Secondary shortcut list</div>
                     <div class="right-x" @click="$emit('shortcut-modal-close')">X</div>
                 </div>
-                <ul v-if="detas.length !== 0">
+                <!-- <ul v-if="detas.length !== 0">
                     <li v-for="(deta,index) in detas" :key="index">
                         <img :src="deta.favicon" alt="" class="shortcut-img">
                         <div class="shortcut-url">
@@ -31,7 +30,10 @@
                         </div>
                         <span class="shortcut-key">{{deta.key}}</span>
                     </li>
-                </ul>
+                </ul> -->
+                <listCard v-if="detas.length !== 0" :ee="detas" @ShortcutDetail="shy">
+
+                </listCard>
                 <div v-else>
                     No secondary shortcut bound yet
                 </div>
@@ -41,6 +43,7 @@
 </template>
 
 <script>
+import listCard from "./list"
 
     export default {
         name: "ShortcutDetail",
@@ -49,6 +52,9 @@
                 detas: '',
             }
         },
+        components:{
+            listCard
+        },
         props: ['ww'],
         async created() {
            let response = await fetch(`https://api.anyshortcut.com/shortcut/${this.ww.id}/secondaries`,{
@@ -56,7 +62,11 @@
            });
            this.detas = (await response.json()).data;
         },
-        methods: {}
+        methods: {
+            shy(item) {
+                window.open(item.url)
+            }
+        }
     }
 </script>
 

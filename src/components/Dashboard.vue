@@ -16,7 +16,7 @@
             <div class="navigation">
                 <router-link to="/shortcuts" class="font">Shortcuts</router-link>
 
-                <router-link to="/subscription/sub" class="font">Subscription</router-link>
+                <router-link to="/subscription" class="font">Subscription</router-link>
 
                 <router-link to="/profile" class="font">Profile</router-link>
             </div>
@@ -109,7 +109,7 @@
         margin: 48px 44px;
 
         a {
-            &.active {
+            &.router-link-active {
                 color: #2b72dc;
             }
         }

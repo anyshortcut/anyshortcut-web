@@ -46,7 +46,7 @@
         list-style: none;
         a{
             padding-bottom: 7px;
-            &.active {
+            &.router-link-exact-active {
                 color:#2b72dc;
                 border-bottom: 1px solid;
             }

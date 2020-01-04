@@ -17,7 +17,7 @@ Vue.use(VueRouter);
 
 const router = new VueRouter({
     mode: "history",
-    linkActiveClass:"active",
+    // linkActiveClass:"active", 
     routes: [
         {path: "/login", component: LoginRoute},
         {
@@ -31,8 +31,7 @@ const router = new VueRouter({
                 {path: "shortcuts", name: 'shortcuts', component: ShortcutRoute},
                 {
                     path: "subscription", component: SubscriptionRoute, children: [
-                        {path:'',component:SubscriptionA},
-                        {path: "sub", name: 'sub', component: SubscriptionA},
+                        {path: "", name: 'sub', component: SubscriptionA},
                         {path: "PaymentMethod", name: 'pay', component: Payment},
                         {path:"Redeem",name:'Rdm',component:Redeem}
                     ]
