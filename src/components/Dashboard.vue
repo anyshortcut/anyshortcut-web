@@ -5,13 +5,24 @@
                 <div class="userAvatar">
                     <img :src="userInfo.user.picture" alt="" class="picture">
                     <p class="userName"> {{userInfo.user.given_name}} </p>
+                    <small @mouseover="setView = true" @mouseout="setView = false">O</small>
+                </div>
+
+                <div v-show="setView" class="set" @mouseover="setView = true" @mouseout="setView = false">
+                        <div></div>
+                        <a href="">Rate us 💗</a>
+                        <a href="">Twitter 🎉</a>
+                        <a href="">Telegram Channel🎊</a>
+                        <a href="">Telegram Group 🎈</a>
+                        <a href="">Sign out</a>
+                    
                 </div>
                 <div class="subscription-status">
                     <div>
                         {{userInfo.subscription.status}}
                     </div>
                 </div>
-                <img src="" alt="">
+            
             </div>
             <div class="navigation">
                 <router-link to="/shortcuts" class="font">Shortcuts</router-link>
@@ -34,6 +45,7 @@
         data() {
             return {
                 userInfo: {},
+                setView: false
             }
         },
         async created() {
@@ -55,7 +67,7 @@
             //     credentials: 'include'
             // });
             // this.userInfo = (await response.json()).data;
-        }
+        },
     }
 </script>
 <style scoped lang="scss">
@@ -81,7 +93,9 @@
         display: flex;
         align-items: center;
     }
-
+    .userAvatar>small {
+        margin-left: auto;
+    }
     .right-panel {
         /*width: 100%;*/
         height: 100%;
@@ -135,5 +149,44 @@
         text-align: center;
         display: inline;
         padding: 0 10px;
+    }
+    .set {
+        width: 180px;
+        background-color: white;
+        border-radius: 4px;
+        position: absolute;
+        left: 54px;
+        bottom: 96px;
+        box-shadow: 1px 1px 6px rgba(0,0,0,0.1);
+        padding: 2px 0;
+    }
+    .set>a {
+        display: block;
+        text-decoration: none;
+        padding: 0 20px;
+        height: 36px;
+        line-height: 36px;
+        border-bottom: 1px solid #ececec;
+        font-size: 13px;
+        font-weight: 400;
+        color: #333333
+    }
+    .set>a:hover {
+        background-color: #ececec
+    }
+    .set>a:last-child {
+        border-bottom: none;
+    }
+    .set>div {
+        border-color: rgb(255, 255, 255);
+        border-left-color: transparent;
+        border-right-color: transparent;
+        border-top-color: transparent;
+        border-width: 0px 5px 5px;
+        border-style: solid;
+        width: 0px;
+        position: absolute;
+        top:-5px;
+        left: 160px;
     }
 </style>

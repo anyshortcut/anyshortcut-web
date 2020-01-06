@@ -31,12 +31,10 @@
                         <span class="shortcut-key">{{deta.key}}</span>
                     </li>
                 </ul> -->
-                <listCard v-if="detas.length !== 0" :ee="detas" @ShortcutDetail="shy">
-
+                <listCard :ee="detas" @ShortcutDetail="shy">
+                    
                 </listCard>
-                <div v-else>
-                    No secondary shortcut bound yet
-                </div>
+            
             </div>
         </div>
     </div>

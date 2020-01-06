@@ -27,7 +27,7 @@ const router = new VueRouter({
                 authRequired: true,
             },
             children: [
-                {path: "", component: ShortcutRoute},
+                {path: "",name:'shortcuts', component: ShortcutRoute},
                 {path: "shortcuts", name: 'shortcuts', component: ShortcutRoute},
                 {
                     path: "subscription", component: SubscriptionRoute, children: [

@@ -39,13 +39,10 @@
                             <span class="shortcut-key">{{compound.key}}</span>
                         </li>
                     </ul> -->
-                    <listCard v-if="compounds.length" :ee="compounds" @ShortcutDetail="ShortcutDetailView">
+                    <listCard :ee="compounds" @ShortcutDetail="ShortcutDetailView">
 
                     </listCard>
-                    <div v-else>
-                        <img src="" alt="">
-                        <small>No compound shortcut bound yet.</small>
-                    </div>
+                    
                 </div>
             </div>
         </div>

@@ -1,6 +1,6 @@
 <template>
      <div>
-         <ul>
+         <ul v-if="ee.length !== 0">
              <li v-for="item in ee" :key="item.id" class="listCard" @click="$emit('ShortcutDetail',item)">
                     <img :src="item.favicon" alt="" class="list-img">
                     <div class="list-centent">
@@ -12,6 +12,12 @@
                     </span>
              </li>
          </ul>
+         <div class="empty-list" v-else>
+             <img src="../assets/logo.png" alt="">
+            <div>
+                No secondary shortcut bound yet
+            </div>
+         </div>
      </div>
 </template>
 
@@ -59,5 +65,12 @@ export default {
         background-color: black;
         margin: 0 5px 0 auto;
         color: white;
+    }
+    .empty-list {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100%;
     }
 </style>
