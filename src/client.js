@@ -11,7 +11,7 @@ let request = axios.create({
 
 request.interceptors.response.use(response => {
     // eslint-disable-next-line no-console
-    console.log(response);
+    // console.log(response);
     // HTTP status code
     if (response.status === 200) {
         // Response code
