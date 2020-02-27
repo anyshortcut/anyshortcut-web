@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import App from './App.vue';
 import VueRouter from 'vue-router'
-import LoginRoute from './components/Login.vue';
-import NotFoundRoute from './components/NotFound.vue';
-import DashboardRoute from './components/Dashboard';
-import ShortcutRoute from './components/Shortcuts.vue';
-import SubscriptionRoute from './components/Subscription.vue';
-import ProfileRoute from './components/Profile.vue';
-import SubscriptionA from './components/Subscription-A'
-import Payment from './components/PaymentMethod'
-import Redeem from './components/Redeem'
+import LoginRoute from './components/Account/Login.vue';
+import NotFoundRoute from './components/Account/NotFound.vue';
+import DashboardRoute from './components/Account/Dashboard';
+import ShortcutRoute from './components/Account/Shortcuts.vue';
+import SubscriptionRoute from './components/Account/Subscription.vue';
+import ProfileRoute from './components/Account/Profile.vue';
+import SubscriptionA from './components/Account/Subscription-A'
+import Payment from './components/Account/PaymentMethod'
+import Redeem from './components/Account/Redeem'
 import Cookies from "js-cookie";
 
 Vue.config.productionTip = false;
@@ -19,12 +19,42 @@ const router = new VueRouter({
     mode: "history",
     // linkActiveClass:"active", 
     routes: [
-        {path: "/login", component: LoginRoute},
+        {path: "/login", component: LoginRoute
+        },
         {
-            path: "/",
+          path: '/',
+          component: () => import('./components/Index/Index'),
+          meta:{ title:'首页'}
+        },
+        {
+          path: '/pricing',
+          component: () => import('./components/Pricing/Pricing'),
+          meta:{title:'pricing'}
+        },
+        {
+          path: '/faq',
+          component: () => import('./components/FAQ/FAQ'),
+          meta:{title:'faq'}
+        },
+        {
+          path: '/contact',
+          component: () => import('./components/Contact/Contact'),
+          meta:{title:'contact'}
+        },
+        {
+          path:'/terms',
+          component: () => import('./components/extra/Terms of service')
+        },
+        {
+          path:'/privacy',
+          component: () => import('./components/extra/Privacy policy')
+        },
+        {
+            path: "/account",
             component: DashboardRoute,
-            meta: {
-                authRequired: true,
+            meta:{
+                // authRequired: true,
+                title:'account'
             },
             children: [
                 {path: "",name:'shortcuts', component: ShortcutRoute},
@@ -39,7 +69,7 @@ const router = new VueRouter({
                 {path: "profile", component: ProfileRoute},
             ]
         },
-        {path: "*", component: NotFoundRoute},
+        {path: "*", component: NotFoundRoute,meta:{title:'Page Not Found'}},
     ],
 });
 
@@ -48,13 +78,14 @@ router.beforeEach((to, from, next) => {
         && !Cookies.get("loginAt")) {
         next({
             path: "/login",
-            query: {
-                redirect: to.fullPath,
-            }
         });
     } else {
         next();
     }
+    if (to.meta.title){
+      document.title = to.meta.title;
+    }
+    next();
 });
 
 new Vue({
