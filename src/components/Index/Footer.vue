@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div class="base-div">
     <footer class="base">
       <div class="footer-top">
         <div class="footer-div">
-          <a>
+          <router-link to="/">
             <img src="https://anyshortcut.com/static/img/logo.svg" alt />
-          </a>
+          </router-link>
         </div>
         <div class="footer-div footer-left">
           <div class="footer-title">Product</div>
@@ -20,7 +20,7 @@
               <a href="#" class="list-item">FAQ</a>
             </li>
             <li>
-              <a href="#" class="list-item">Github</a>
+              <a href="https://github.com/anyshortcut" class="list-item">Github</a>
             </li>
           </ul>
         </div>
@@ -28,12 +28,12 @@
           <div class="footer-title">Connect</div>
           <ul class="footer-ul">
             <li><a href='#' class="list-item">Contact us</a></li>
-            <li><a href="#" class="list-item">Twitter</a></li>
+            <li><a href="https://twitter.com/anyshortcut" class="list-item">Twitter</a></li>
             <li>
-              <a href="#" class="list-item">Telegram</a>
+              <a href="https://telegram.me/anyshortcut" class="list-item">Telegram</a>
             </li>
             <li>
-              <a href="#" class="list-item">Telegram Group</a>
+              <a href="https://t.me/anyshortcut_group" class="list-item">Telegram Group</a>
             </li>
           </ul>
         </div>
@@ -41,10 +41,10 @@
           <div class="footer-title">Legal</div>
           <ul class="footer-ul">
             <li>
-              <a href="#" class="list-item">Terms of service</a>
+              <router-link to="/terms" class="list-item">Terms of service</router-link>
             </li>
             <li>
-              <a href="#" class="list-item">Privacy policy</a>
+              <router-link to="/privacy" class="list-item">Privacy policy</router-link>
             </li>
           </ul>
         </div>
@@ -71,9 +71,14 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
-.base {
-  padding: 50px 20px 20px;
+.base-div {
   background-color: #f6f9fc;
+}
+.base {
+  margin: 0 auto;
+  max-width: 1280px;
+  padding: 50px 20px 20px;
+  // background-color: #f6f9fc;
 }
 .footer-top {
   display: flex;
@@ -104,6 +109,9 @@ a {
   text-align: left;
   font-size: 14px;
   line-height: 30px
+}
+.list-item:hover {
+  color: #333;
 }
 .footer-small {
   display: block;
