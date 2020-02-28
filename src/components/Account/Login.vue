@@ -6,7 +6,7 @@
                 <h1 class="heading">Sign in</h1>
                 <div class="text" onclick="" data-v-sdfsddf23>Sign in with Google to manage your shortcut, subscription etc</div>
                 <div class="button btn-google-sign-in" @click="onGoogleSignIn">Sign in with Google</div>
-                <div>
+                <div class="description">
                     <small>
                         By signing in, I agree to <a href="" target="_blank">Terms of Service</a> and <a href="">Privacy Policy</a>
                     </small>
@@ -46,7 +46,11 @@
     }
 </script>
 <style scoped>
-
+    *{
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
     .login-route {
         background: #507ce8 url(../../assets/icons-background.svg) no-repeat;
         width: 100%;
@@ -59,7 +63,7 @@
     .btn-google-sign-in {
         letter-spacing: 1px;
         border: none;
-        width: 280px;
+        width: 65%;
         border-radius: 4px;
         margin: 30px auto;
         color: #777;
@@ -78,9 +82,9 @@
 
     .sign-in-form {
         background-color: #FFFFFF;
-        padding: 2rem 1.4rem;
+        padding: 2rem 0;
         border-radius: 14px;
-        margin: 3rem;
+        margin: 3rem 1rem;
     }
 
     .heading {
@@ -92,10 +96,13 @@
 
     .text {
         font-size: 17px;
-        width: 80%;
+        width: 90%;
         margin: auto;
     }
 
+    .description{
+      padding: 0 20px;
+    }
 
     a {
         text-decoration: none;
@@ -104,5 +111,11 @@
 
     a:hover {
         color: #4a4a4a;
+    }
+
+    @media screen and (max-width: 798px){
+      .sign-in-form {
+        padding: 2rem 0;
+      }
     }
 </style>
