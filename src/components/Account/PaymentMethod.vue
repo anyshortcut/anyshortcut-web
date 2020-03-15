@@ -1,14 +1,14 @@
 <template>
     <div class="payment">
       <div  class="top">
-        <h2>You have no credit card added</h2>
-        <div>Please add your credit card for next billing renew.</div>
+        <h2 class="subtitle">You have no credit card added</h2>
+        <div class="subtext">Please add your credit card for next billing renew.</div>
       </div>
       <div>
-        <h3>Enter your payment details securely <img src="" alt=""></h3>
-        <form action="" class="formlist">
+        <h3 class="formtitle">Enter your payment details securely <img src="../../assets/padlock.svg" alt=""></h3>
+        <form action="#" class="formlist">
           <div class="input-list">
-            <span class="">name</span>
+            <span>Name</span>
             <input type="text" placeholder="jane Doe" class="field">
           </div>
           <div class="input-list">
@@ -40,9 +40,37 @@
   .top {
     margin-bottom: 80px
   }
+  .subtitle {
+    font-size: 22px;
+    line-height: 30px;
+    color: #44485b;
+    font-family: Poppins,sans-serif;
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+  .subtext {
+    font-size: 15px;
+    line-height: 26px;
+    font-family: Open Sans,sans-serif;
+    font-weight: 400;
+    color: #6d7d93;
+    letter-spacing: 0;
+  }
+  .formtitle {
+    font-size: 17px;
+    line-height: 30px;
+    font-family: Poppins,sans-serif;
+    font-weight: 500;
+    color: #527fe5;
+    letter-spacing: 0;
+  }
+  .formtitle>img {
+    height: 16px
+  }
   .formlist {
     width: 480px;
-    margin: 20px auto
+    margin: 20px auto;
+    color: #8898aa;
   }
   .input-list {
     background-color: white;
@@ -65,15 +93,21 @@
     width: 70%;
     float: right;
     padding: 0 10px;
+    outline: none;
   }
   
   .btn {
     width: 100%;
     height: 35px;
-    background-color: blue;
+    background-color: #507ce8;
     color: white;
     font-size: 16px;
     border: none;
-    border-radius: 4px
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+  }
+  .btn:hover {
+    background-color: #3f6bdb
   }
 </style>

@@ -11,13 +11,13 @@
           <div class="footer-title">Product</div>
           <ul class="footer-ul">
             <li >
-              <a href="#" class="list-item">Account</a>
+              <router-link to="/account" class="list-item">Account</router-link>
             </li>
             <li>
-              <a href="#" class="list-item">Pricing</a>
+              <router-link to="/pricing" class="list-item">Pricing</router-link>
             </li>
             <li>
-              <a href="#" class="list-item">FAQ</a>
+              <router-link to="/faq" class="list-item">FAQ</router-link>
             </li>
             <li>
               <a href="https://github.com/anyshortcut" class="list-item">Github</a>
@@ -27,7 +27,7 @@
         <div class="footer-div">
           <div class="footer-title">Connect</div>
           <ul class="footer-ul">
-            <li><a href='#' class="list-item">Contact us</a></li>
+            <li><router-link to="/contact" class="list-item">Contact us</router-link></li>
             <li><a href="https://twitter.com/anyshortcut" class="list-item">Twitter</a></li>
             <li>
               <a href="https://telegram.me/anyshortcut" class="list-item">Telegram</a>

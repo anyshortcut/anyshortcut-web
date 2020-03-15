@@ -1,14 +1,14 @@
 <template>
   <div>
     <titleDiv></titleDiv>
-    <div>
+    <div class="center">
       <div class="heading">
         <h1 class="title">Privacy Policy</h1>
         <p class="text">Last updated: April 19th, 2018</p>
       </div>
       <div class="container">
         <p>Anyshortcut.com, ("Anyshortcut","we",or"us") operates the Anyshortcut 
-          chrome extension and the website <a>https://anyshortcut.com</a> (collectively, 
+          chrome extension and the website <a href="http://localhost:8080/">https://anyshortcut.com</a> (collectively, 
           the “Service” or “Products”). We believe that your privacy is a fundamental 
           right. This page informs you of our policies and practices regarding the 
           collection, use and disclosure of information which personally identifies 
@@ -88,6 +88,10 @@ export default {
     margin: 0;
     // text-align: center;
   }
+  .center {
+    max-width: 1280px;
+    margin:0 auto;
+  }
   .heading {
     text-align: center;
     padding: 3rem;
@@ -108,7 +112,7 @@ export default {
     font-size: 17px;
   }
   .container {
-    padding: 3.5rem;
+    padding: 1rem 3.5rem 3.5rem;
     color: #4a4a4a
   }
   .container p {

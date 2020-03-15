@@ -26,7 +26,7 @@
         <div class="section">
           <h1 class="heading">Forget mouse clicks, embrace shortcuts!</h1>
           <div class>Customize keyboard shortcuts for your frequently visited websites</div>
-          <button class="btn">Add To Chrome</button>
+          <button class="btn" @click="btn">Add To Chrome</button>
         </div>
       </header>
       <div class="content">
@@ -96,9 +96,9 @@
               </p>
             </div>
           </div>
-          <div class>
-            <h1>Auxiliary Shortcuts</h1>
-            <div class="paragraph paragraph-list">
+          <div class='last'>
+            <h1 class="last-title">Auxiliary Shortcuts</h1>
+            <div class="paragraph-list">
               <div class="paragraph-l">
                 <div>
                   <h3>Switch tabs</h3>
@@ -129,7 +129,7 @@
             <h1 class="container-h1">It's time to boost your productivity!</h1>
             <p class="container-p">Get started for free!</p>
           </div>
-          <button class="btn container-btn">Add To Chrome</button>
+          <button class="btn container-btn" @click="btn">Add To Chrome</button>
         </div>
       </div>
       <div hidden id="solid" class="fixed" @click="fixed">
@@ -156,6 +156,9 @@ export default {
           clearInterval(rr);
         }
       }, 10);
+    },
+    btn() {
+      window.open('https://chrome.google.com/webstore/detail/anyshortcut/ginilcdjefkbpeelgekodpmmabppcfao')
     }
   },
   created() {
@@ -211,24 +214,28 @@ a {
   border: none;
   font-size: 16px;
   color: #507ce8;
-  /* padding: 0 30px 0 51px; */
+  box-sizing: border-box;
+  padding: 0 30px 0 51px;
   background-image: url("../../assets/logo.png");
   background-size: 26px 26px;
   background-repeat: no-repeat;
   background-position: 39px;
   background-color: white;
+  outline: none;
+  cursor: pointer;
 }
 .content {
-  margin: 0 4rem;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 .content-title {
-  padding: 3rem 1.5rem;
+  padding: 3rem 1.5rem 0;
 }
 .paragraph {
   display: flex;
   /* justify-content: space-around; */
   align-items: center;
-  margin: 4rem 1rem;
+  margin: 4rem;
 }
 .paragraph-p {
   margin: 60px;
@@ -284,14 +291,30 @@ a {
 .columns-ul > li {
   text-align: left;
 }
+.last {
+  margin: 4rem 1rem;
+}
+.last-title {
+  font-family: Poppins,sans-serif;
+  font-weight: 500;
+  letter-spacing: 0;
+  font-size: 28px;
+  line-height: 42px;
+  color: #546496;
+  padding-top: 2rem;
+}
 .paragraph-list {
+  display: flex;
+  /* justify-content: space-around; */
+  align-items: center;
+  margin: 4rem;
   align-items: flex-start;
   justify-content: space-between;
-  margin: 2rem 1rem 4rem;
+  margin: 1rem 1rem 4rem;
 }
 .paragraph-l {
   width: 40%;
-  margin: 0 50px;
+  margin: 0 60px;
 }
 .text {
   font-size: 17px;
@@ -323,6 +346,7 @@ a {
   padding: 20px 60px;
   display: flex;
   justify-content: space-between;
+  max-width: 1280px;
   margin: 0 auto;
 }
 .nav-li {
@@ -349,6 +373,13 @@ a {
   }
   @media screen and (max-width: 798px) {
     .paragraph {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      align-items: center;
+      margin: 2rem 1rem 4rem;
+    }
+    .paragraph-list {
       flex-direction: column;
       justify-content: center;
       align-items: center;

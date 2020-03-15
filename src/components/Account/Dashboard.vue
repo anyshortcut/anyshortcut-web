@@ -5,7 +5,7 @@
                 <div class="userAvatar">
                     <img :src="userInfo.user.picture" alt="" class="picture">
                     <p class="userName"> {{userInfo.user.given_name}} </p>
-                    <small @mouseover="setView = true" @mouseout="setView = false">O</small>
+                    <small @mouseover="setView = true" @mouseout="setView = false">O99999</small>
                 </div>
 
                 <div v-show="setView" class="set" @mouseover="setView = true" @mouseout="setView = false">

@@ -1,40 +1,41 @@
 <template>
   <div>
     <titleDiv></titleDiv>
-    <div class="title-top">
-      <h1 class="title-h1">One Simple plan</h1>
-      <div class="title-text">No Ads. No additional cost. Subscribe by year</div>
-    </div>
-    <div class="content">
-      <div class="content-card">
-            <img class="content-card-img" src="https://anyshortcut.com/static/img/gorgeous.svg" alt />
-            <div class="discount">$9.99 / year</div>
-            <h1 class="content-card-peading">$4.99 / year, 50% off</h1>
-            <div class="content-card-bottom">
-              <div>
-                <div class="content-card-list">
-                  <img class='img-right' src="../../assets/right.svg" alt />
-                  <div>All kind of shortcuts</div>
-                </div>
-                <div class="content-card-list">
-                  <img class='img-right' src="../../assets/right.svg" alt />
-                  <div>Shortcut frequency statistics</div>
-                </div>
-                <div class="content-card-list">
-                  <img class='img-right' src="../../assets/right.svg" alt />
-                  <div>Unlimited shortcut supported</div>
-                </div>
-                <div class="content-card-list">
-                  <img class='img-right' src="../../assets/right.svg" alt />
-                  <div>Shortcut sync everywhere</div>
-                </div>
-              </div>  
-            </div>
-            <br>
-            <button class="content-btn">Subscribe Now!</button>
+    <div class="pricing-div">
+      <div class="title-top">
+        <h1 class="title-h1">One Simple plan</h1>
+        <div class="title-text">No Ads. No additional cost. Subscribe by year</div>
       </div>
-    </div>  
-    <div class="pricing-bottom">
+      <div class="content">
+        <div class="content-card">
+          <img class="content-card-img" src="https://anyshortcut.com/static/img/gorgeous.svg" alt />
+          <div class="discount">$9.99 / year</div>
+          <h1 class="content-card-peading">$4.99 / year, 50% off</h1>
+          <div class="content-card-bottom">
+            <div>
+              <div class="content-card-list">
+                <img class="img-right" src="../../assets/right.svg" alt />
+                <div>All kind of shortcuts</div>
+              </div>
+              <div class="content-card-list">
+                <img class="img-right" src="../../assets/right.svg" alt />
+                <div>Shortcut frequency statistics</div>
+              </div>
+              <div class="content-card-list">
+                <img class="img-right" src="../../assets/right.svg" alt />
+                <div>Unlimited shortcut supported</div>
+              </div>
+              <div class="content-card-list">
+                <img class="img-right" src="../../assets/right.svg" alt />
+                <div>Shortcut sync everywhere</div>
+              </div>
+            </div>
+          </div>
+          <br />
+          <button class="content-btn">Subscribe Now!</button>
+        </div>
+      </div>
+      <div class="pricing-bottom">
         <div class="prc-btm-list">
           <img class="prc-bottom-img" src="https://anyshortcut.com/static/img/product.svg" alt />
           <p class="prc-bottom-text">
@@ -59,9 +60,12 @@
         <div class="prc-btm-list">
           <img class="prc-bottom-img" src="https://anyshortcut.com/static/img/faq.svg" alt />
           <p class="prc-bottom-text">
-            Any question? Please visit our<router-link to="/faq"> FAQ</router-link> or<a href="#"> contact us</a>
+            Any question? Please visit our
+            <router-link to="/faq">FAQ</router-link>or
+            <a href="#">contact us</a>
           </p>
         </div>
+      </div>
     </div>
     <footerDiv></footerDiv>
   </div>
@@ -88,6 +92,10 @@ export default {
 }
 a {
   text-decoration: none;
+}
+.pricing-div {
+  max-width: 1280px;
+  margin: 0 auto;
 }
 .title-top {
   margin: 3rem 1rem;
@@ -174,13 +182,13 @@ a {
   color: #6d7d93;
   font-weight: 400;
 }
-.prc-bottom-text>a {
+.prc-bottom-text > a {
   color: #3273dc;
 }
-.prc-bottom-text>a:hover{
+.prc-bottom-text > a:hover {
   color: #333;
 }
-@media screen and (max-width: 798px){
+@media screen and (max-width: 798px) {
   .pricing-bottom {
     flex-direction: column;
   }

@@ -43,11 +43,13 @@ const router = new VueRouter({
         },
         {
           path:'/terms',
-          component: () => import('./components/extra/Terms of service')
+          component: () => import('./components/extra/Terms of service'),
+          meta:{title:'terms'}
         },
         {
           path:'/privacy',
-          component: () => import('./components/extra/Privacy policy')
+          component: () => import('./components/extra/Privacy policy'),
+          meta:{title:'privacy'}
         },
         {
             path: "/account",
@@ -73,6 +75,11 @@ const router = new VueRouter({
     ],
 });
 
+//页面之间跳转，打开新的一个页面显示在顶部
+// router.afterEach((to, from, next) => {
+//  next(window.scrollTo(0, 0))
+// })
+
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.authRequired)
         && !Cookies.get("loginAt")) {
@@ -80,12 +87,12 @@ router.beforeEach((to, from, next) => {
             path: "/login",
         });
     } else {
-        next();
+        next(window.scrollTo(0, 0));
     }
     if (to.meta.title){
       document.title = to.meta.title;
     }
-    next();
+    // next(window.scrollTo(0, 0));
 });
 
 new Vue({

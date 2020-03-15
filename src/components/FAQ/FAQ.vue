@@ -95,6 +95,8 @@ a {
   margin: 0 auto;
 }
 .content {
+  max-width: 1280px;
+  margin: 0 auto;
   padding: 20px 60px;
 }
 .heading {

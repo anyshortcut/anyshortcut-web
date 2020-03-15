@@ -8,7 +8,7 @@
       </div>
       <div class="container">
         <p>Please read these Terms and Conditions ("Terms", "Terms and Conditions") 
-          carefully before using the Anyshortcut or <a>https://anyshortcut.com</a> website 
+          carefully before using the Anyshortcut or <a href="http://localhost:8080/">https://anyshortcut.com</a> website 
           operated by <b>ANYSHORTCUT.COM</b> ("us","we", or "our").</p>
         <p>Your access to and use of the Service is conditioned on your acceptance of 
           and compliance with these Terms. These Terms apply to all visitors, users and 
@@ -47,7 +47,7 @@
             if you don't want to renew.</li>
         </ol>
         <h5>Personal Information</h5>
-        <p>Your submission of personal information is governed by our <a>Privacy Policy</a>.</p>
+        <p>Your submission of personal information is governed by our <a href="http://localhost:8080/privacy">Privacy Policy</a>.</p>
         <h5>Prohibited Uses</h5>
         <p>You are prohibited from using the product or the website:</p>
         <ul>
@@ -159,7 +159,7 @@ export default {
     font-size: 17px;
   }
   .container {
-    padding: 3.5rem;
+    padding: 1rem 3.5rem 3.5rem;
     color: #4a4a4a
   }
   .container p {
