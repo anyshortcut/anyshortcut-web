@@ -10,7 +10,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "bulma": "^0.8.0",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "core-js": "^3.3.2",
     "dayjs": "^1.8.18",
     "js-cookie": "^2.2.1",
